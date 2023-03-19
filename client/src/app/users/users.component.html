@@ -1,0 +1,22 @@
+<div class="order-history-container">
+  <h2>Users</h2>
+  {{ error }}
+  <nz-table [nzData]="users" *ngIf="users.data.length > 0">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of users.data">
+        <td>{{ item.id }}</td>
+        <td>{{ item.fname }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.role }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

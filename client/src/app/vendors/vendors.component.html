@@ -1,0 +1,93 @@
+<div class="order-history-container">
+  <h2>Vendors</h2>
+  {{ error }}
+  <div class="add-button-container">
+    <button class="add-button" nz-button [nzType]="'primary'" (click)="showModal()"><span>Add Vendor</span></button>
+  </div>
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="Add vendor" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <ng-container *nzModalContent>
+        <nz-alert
+          *ngIf="errorMessage"
+          nzShowIcon
+          nzType="error"
+          [nzMessage]="errorMessage"
+          [ngStyle]="{ 'margin-bottom': '16px' }"
+        ></nz-alert>
+        <form #registerForm="ngForm" (ngSubmit)="onSubmit()">
+          <div class="input-container">
+            <label for="fullName">Full name</label>
+            <input
+              nz-input
+              type="text"
+              name="fullName"
+              [(ngModel)]="fullName"
+              placeholder="Enter your full name"
+            />
+          </div>
+          <div class="input-container">
+            <label for="email">Email address</label>
+            <input
+              nz-input
+              type="email"
+              name="email"
+              [(ngModel)]="email"
+              placeholder="Enter your email address"
+            />
+          </div>
+          <div class="password-input">
+            <div class="input-container">
+              <label for="password">Password</label>
+              <input
+                nz-input
+                type="password"
+                name="password"
+                [(ngModel)]="password"
+                placeholder="Enter a strong password"
+              />
+            </div>
+            <div class="input-container">
+              <label for="confirmPassword">Confirm password</label>
+              <input
+                nz-input
+                type="password"
+                name="confirmPassword"
+                [(ngModel)]="confirmPassword"
+                placeholder="Repeat your password"
+              />
+            </div>
+          </div>
+        </form>
+    </ng-container>
+  </nz-modal>
+  <br/>
+  <nz-table [nzData]="vendors" *ngIf="vendors.data.length > 0">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of vendors.data">
+        <td>{{ item.id }}</td>
+        <td>
+          <div class="editable-cell" [hidden]="editId === item.id" (click)="startEdit(item.id)">
+            {{ item.fname }}
+          </div>
+          <input [hidden]="editId !== item.id" type="text" nz-input [(ngModel)]="item.fname" (blur)="stopEdit()" />
+        </td>
+        <td>
+          <div class="editable-cell" [hidden]="editId === item.id" (click)="startEdit(item.id)">
+            {{ item.email }}
+          </div>
+          <input [hidden]="editId !== item.id" type="text" nz-input [(ngModel)]="item.email" (blur)="stopEdit()" />
+        </td>
+        <td>
+          <a nz-popconfirm nzPopconfirmTitle="Sure to delete?" (nzOnConfirm)="deleteRow(item.id)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

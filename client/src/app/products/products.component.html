@@ -1,0 +1,116 @@
+<div class="order-history-container">
+  <h2>Products</h2>
+  {{ error }}
+  <div class="add-button-container">
+    <button class="add-button" nz-button [nzType]="'primary'" (click)="showModal()"><span>Add product</span></button>
+  </div>
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="Add product" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <ng-container *nzModalContent>
+        <h2>Sign Up to TUNISHOP</h2>
+        <nz-alert
+          *ngIf="errorMessage"
+          nzShowIcon
+          nzType="error"
+          [nzMessage]="errorMessage"
+          [ngStyle]="{ 'margin-bottom': '16px' }"
+        ></nz-alert>
+        <form #registerForm="ngForm" (ngSubmit)="onSubmit()">
+          <div class="input-container">
+            <label for="title">Name</label>
+            <input
+              nz-input
+              type="text"
+              name="title"
+              [(ngModel)]="title"
+              placeholder="Enter your product name"
+            />
+          </div>
+          <div class="input-container">
+            <label for="image">Image</label>
+            <input
+              nz-input
+              type="text"
+              name="image"
+              [(ngModel)]="image"
+              placeholder="Enter image url"
+            />
+          </div>
+            <div class="input-container">
+              <label for="price">Price</label>
+              <input
+                nz-input
+                type="text"
+                name="price"
+                [(ngModel)]="price"
+                placeholder="Enter the price"
+              />
+            </div>
+            <div class="input-container">
+              <label for="quantity">Quantity</label>
+              <input
+                nz-input
+                type="text"
+                name="quantity"
+                [(ngModel)]="quantity"
+                placeholder="Enter the quantity"
+              />
+            </div>
+            <div class="input-container">
+              <label for="description">Description</label>
+              <input
+                nz-input
+                type="text"
+                name="description"
+                [(ngModel)]="description"
+                placeholder="Enter the description"
+              />
+            </div>
+        </form>
+    </ng-container>
+  </nz-modal>
+  <br/>
+  <nz-table #basicTable nzShowPagination [nzData]="products" *ngIf="products.length > 0">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of basicTable.data">
+        <td>
+          <div class="editable-cell" [hidden]="editId === item.id" (click)="startEdit(item.id)">
+            <img [src]="item.image" width="60">
+          </div>
+          <input [hidden]="editId !== item.id" type="text" nz-input [(ngModel)]="item.image" (blur)="stopEdit()" />
+        </td>
+        <td>
+          <div class="editable-cell" [hidden]="editId === item.id" (click)="startEdit(item.id)">
+            {{ item.title }}
+          </div>
+          <input [hidden]="editId !== item.id" type="text" nz-input [(ngModel)]="item.title" (blur)="stopEdit()" />
+        </td>
+
+        <td>
+          <div class="editable-cell" [hidden]="editId === item.id" (click)="startEdit(item.id)">
+            {{ item.quantity }}
+          </div>
+          <input [hidden]="editId !== item.id" type="text" nz-input [(ngModel)]="item.quantity" (blur)="stopEdit()" />
+        </td>
+
+        <td>
+          <div class="editable-cell" [hidden]="editId === item.id" (click)="startEdit(item.id)">
+            {{ item.price }}
+          </div>
+          <input [hidden]="editId !== item.id" type="text" nz-input [(ngModel)]="item.price" (blur)="stopEdit()" />
+        </td>
+        <td>
+          <a nz-popconfirm nzPopconfirmTitle="Sure to delete?" (nzOnConfirm)="deleteRow(item.id)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
