@@ -46,7 +46,7 @@
         >
       </div>
       <div class="price-container">
-        <h2 class="price">{{ product.price | currency: "TND" }}</h2>
+        <h2 class="price">{{ product.price | currency: "€" }}</h2>
         <span
           class="availability"
           [ngStyle]="{ color: quantity > 0 ? 'inherit' : 'red' }"

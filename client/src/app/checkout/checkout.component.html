@@ -45,7 +45,7 @@
           <div><span>Item(s)</span> {{ cartData.products.length }}</div>
           <div><span>Payment method</span> Credit</div>
           <div>
-            <span>Order total</span> {{ cartData.total | currency: "TND" }}
+            <span>Order total</span> {{ cartData.total | currency: "€" }}
           </div>
         </div>
         <button
@@ -68,8 +68,8 @@
               {{ item.title }}
             </div>
             <div class="item-total">
-              {{ item.price | currency: "TND" }} x {{ item.quantity }} =
-              {{ item.quantity * item.price | currency: "TND" }}
+              {{ item.price | currency: "€" }} x {{ item.quantity }} =
+              {{ item.quantity * item.price | currency: "€" }}
             </div>
           </div>
         </div>
@@ -102,8 +102,8 @@
               {{ item.title }}
             </div>
             <div class="item-total">
-              {{ item.price | currency: "TND" }} x {{ item.quantity }} =
-              {{ item.quantity * item.price | currency: "TND" }}
+              {{ item.price | currency: "€" }} x {{ item.quantity }} =
+              {{ item.quantity * item.price | currency: "€" }}
             </div>
           </div>
         </div>

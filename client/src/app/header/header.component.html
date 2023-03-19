@@ -59,7 +59,7 @@
                     <div class="product-name">{{ product.title }}</div>
                     <div class="product-amount">
                       {{ product.quantity }} x
-                      <span>{{ product.price | currency: "TND" }}</span>
+                      <span>{{ product.price | currency: "€" }}</span>
                     </div>
                   </div>
                 </div>
@@ -70,7 +70,7 @@
                 {{ cartData.products.length }} Item(s) selected
               </div>
               <div class="total-price">
-                Total: {{ cartData.total | currency: "TND" }}
+                Total: {{ cartData.total | currency: "€" }}
               </div>
             </div>
             <div class="cart-cta">
