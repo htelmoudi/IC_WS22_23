@@ -9,7 +9,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 To start frontend : 
 
 * npm install
-* npm start
+* npm serve
 
 # Backend 
 
@@ -19,8 +19,8 @@ install xampp
 Start mysql from phpmyadmin 
 
 in Vscode to launch backend 
-npm install
-npm start
+`npm install`
+`npm start`
 
 ## Development server
 
