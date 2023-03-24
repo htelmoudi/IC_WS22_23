@@ -1,13 +1,26 @@
 # IC_WS22_23
 Start the project :
 
-Frontend : 
-npm install
-npm start
 
 # Client
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
+
+To start frontend : 
+
+* npm install
+* npm start
+
+# Backend 
+
+To start backend : 
+install xampp 
+
+Start mysql from phpmyadmin 
+
+in Vscode to launch backend 
+npm install
+npm start
 
 ## Development server
 
@@ -34,8 +47,3 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 
-Start mysql from phpmyadmin : 
-
-Backend : 
-npm install
-npm start
